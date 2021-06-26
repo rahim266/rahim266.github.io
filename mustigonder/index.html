@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js " integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin=" anonymous "></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="richtextedit/site.css">
+    <link rel="stylesheet" href="richtextedit/richtext.min.css">
+    <script src="richtextedit/jquery.richtext.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <h1 class="navh1">mustik</h1>
+        </div>
+    </header>
+    <section id="main">
+        <div class="main-header">
+            <h3 class="main-h3a"><a href="">Yardım Merkezi</a></h3>
+        </div>
+        <div class="main-content">
+            <div class="content-body" id="content">
+                <br>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <label class="hood" for=" "> Yemek Önizleme</label>
+                    <div class="frmname">
+                        <input class="fileupload" type="file" name="uploadfile" value="" required/>
+                    </div>
+                    <label class="hood" for=" ">Yemek İsmi</label>
+                    <div class="frmname">
+                        <input type="text " name="name " required>
+                    </div>
+                    <div class="frmemail">
+                        <label for=" ">
+                        <div class="emaillbl1 hood ">Kategoriler</div>
+                        <select id="category">
+                            <option value="eksi">ekşi</option>
+                            <option value="aci">acı</option>
+                            <option value="tatli">tatlı</option>
+                            <option value="tuzlu" selected>Audi</option>
+                      </select>
+                    </div>
+                    <div class="page-wrapper box-content">
+
+                        <textarea class="content" name="example"></textarea>
+
+                    </div>
+
+                    <script>
+                        $(document).ready(function() {
+                            $('.content').richText();
+                        });
+                    </script>
+                </form>
+              
+                <button class="submitbtn" type="submit " value="sbmit ">Gönder</button>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-body ">
+            NO &copy; 2021 MUME AGENCY
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

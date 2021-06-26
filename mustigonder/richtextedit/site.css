@@ -1,0 +1,41 @@
+/* reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* general */
+
+
+/* page */
+
+.page-wrapper {
+    margin: 0 auto;
+    width: 960px;
+    max-width: 100%;
+}
+
+
+/* box */
+
+.box-content {
+    background-color: #fff;
+}
+
+textarea {
+    background-color: #fff;
+    border: #EFEFEF solid 1px;
+    color: #333;
+    height: 150px;
+    width: 100%;
+}
+
+
+/* richtext custom style */
+
+.richText {
+    margin-top: 20px;
+}
