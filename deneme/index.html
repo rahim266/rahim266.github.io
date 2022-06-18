@@ -1,274 +1,459 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Product Card Design</title>
-    <!----css custom file link-->
-    <link rel="stylesheet" href="style.css">
-    <!---Fontawesome CDN link----->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./resources/images/aso.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="richtextedit/site.css">
+    <link rel="stylesheet" href="richtextedit/richtext.min.css">
+    <script src="richtextedit/jquery.richtext.js"></script>
     <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
+        [type=checkbox]:focus {
+            --tw-ring-offset-width: 0px !important;
         }
 
-        body {
-            font-family: "Poppins", sans-serif;
-            overflow: hidden;
+        .copyClose {
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+            -ms-user-select: none;
+            user-select: none
         }
 
-        .wave {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .container {
-            width: 100vw;
-            height: 100vh;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 7rem;
-            padding: 0 2rem;
-        }
-
-        .img {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        .login-content {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            text-align: center;
-        }
-
-        .img img {
-            width: 500px;
-        }
-
-        form {
-            width: 360px;
-        }
-
-        .login-content img {
-            height: 100px;
-        }
-
-        .login-content h2 {
-            margin: 15px 0;
-            color: #333;
-            text-transform: uppercase;
-            font-size: 2.9rem;
-        }
-
-        .login-content .input-div {
-            position: relative;
-            display: grid;
-            grid-template-columns: 7% 93%;
-            margin: 25px 0;
-            padding: 5px 0;
-            border-bottom: 2px solid #d9d9d9;
-        }
-
-        .login-content .input-div.one {
-            margin-top: 0;
-        }
-
-        .i {
-            color: #d9d9d9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .i i {
-            transition: 0.3s;
-        }
-
-        .input-div>div {
-            position: relative;
-            height: 45px;
-        }
-
-        .input-div>div>h5 {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #999;
-            font-size: 18px;
-            transition: 0.3s;
-        }
-
-        .input-div:before,
-        .input-div:after {
-            content: "";
-            position: absolute;
-            bottom: -2px;
-            width: 0%;
-            height: 2px;
-            background-color: #38d39f;
-            transition: 0.4s;
-        }
-
-        .input-div:before {
-            right: 50%;
-        }
-
-        .input-div:after {
-            left: 50%;
-        }
-
-        .input-div.focus:before,
-        .input-div.focus:after {
-            width: 50%;
-        }
-
-        .input-div.focus>div>h5 {
-            top: -5px;
-            font-size: 15px;
-        }
-
-        .input-div.focus>.i>i {
-            color: #38d39f;
-        }
-
-        .input-div>div>input {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            outline: none;
-            background: none;
-            padding: 0.5rem 0.7rem;
-            font-size: 1.2rem;
-            color: #555;
-            font-family: "poppins", sans-serif;
-        }
-
-        .input-div.pass {
-            margin-bottom: 4px;
-        }
-
-        a {
-            display: block;
-            text-align: right;
-            text-decoration: none;
-            color: #999;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        a:hover {
-            color: #38d39f;
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            height: 50px;
-            border-radius: 25px;
-            outline: none;
-            border: none;
-            background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
-            background-size: 200%;
-            font-size: 1.2rem;
-            color: #fff;
-            font-family: "Poppins", sans-serif;
-            text-transform: uppercase;
-            margin: 1rem 0;
-            cursor: pointer;
-            transition: 0.5s;
-        }
-
-        .btn:hover {
-            background-position: right;
-        }
-
-        @media screen and (max-width: 1050px) {
-            .container {
-                grid-gap: 5rem;
-            }
-        }
-
-        @media screen and (max-width: 1000px) {
-            form {
-                width: 290px;
-            }
-
-            .login-content h2 {
-                font-size: 2.4rem;
-                margin: 8px 0;
-            }
-
-            .img img {
-                width: 400px;
-            }
-        }
-
-        @media screen and (max-width: 900px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-
-            .img {
-                display: none;
-            }
-
-            .wave {
-                display: none;
-            }
-
-            .login-content {
-                justify-content: center;
-            }
-        }
     </style>
-  
 </head>
 
-<body>
 
-    <div class="container">
-        <div class="img">
-            <img src="https://svgshare.com/i/JcM.svg">
-        </div>
-        <div class="login-content">
-            <form action="index.html">
-                <img src="https://svgshare.com/i/Jcf.svg">
-                <h2 class="title">Welcome</h2>
-                <div class="input-div one">
-                    <div class="i">
-                        <i class="fas fa-user"></i>
+<body class="overflow-y-hidden	">
+    
+    <div class="flex h-screen antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light">
+
+
+        <aside id="mobile-menu-1" class="flex-shrink-0 hidden w-64 bg-white border-r dark:border-primary-darker dark:bg-darker md:block">
+            <div class="flex flex-col h-full">
+                <nav aria-label="Main" class="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
+                    <ul class="space-y-2">
+                        <li>
+                            <div class="flex flex-col items-center">
+                                <img src="./resources/images/aso.png" class="w-28 h-28" alt="">
+                                <h1 class="text-3xl font-bold">ASO</h1>
+                                <h4>Hoşgeldiniz <span class="font-medium">rahimx</span>;</h4>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="index.php" class="text-gray-900 flex items-center p-2 text-base font-normal rounded-lg dark:text-white group hover:bg-teal-400 hover:text-white dark:hover:bg-gray-700">
+                                <i class="text-gray-500 group-hover:text-white fa-solid fa-house fa-lg transition duration-75 dark:text-gray-400 dark:group-hover:text-white"></i>
+                                <span class="ml-3">Anasayfa</span>
+                            </a>
+                        </li>
+                        <li>
+                            <button type="button" class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-teal-400 hover:text-white dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                                <i class="fa-solid fa-inbox fa-lg text-gray-500  transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"></i>
+
+                                <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Şikayetler</span>
+                                <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                                <li>
+                                    <a href="cevaplanmamissikayetler.php" class="text-gray-900 flex items-center p-2 pl-5 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-teal-400 hover:text-white dark:text-white dark:hover:bg-gray-700">Cevaplanmamış Şikayetler</a>
+                                </li>
+                                <li>
+                                    <a href="sikayetler.php" class="text-gray-900 flex items-center p-2 pl-5 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-teal-400 hover:text-white dark:text-white dark:hover:bg-gray-700">Cevaplanmış Şikayetler</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="urunler.php?id=1" class="text-gray-900 flex items-center p-2 text-base font-normal rounded-lg dark:text-white group hover:bg-teal-400 hover:text-white dark:hover:bg-gray-700">
+                                <i class="text-gray-500 group-hover:text-white fa-solid fa-cart-shopping fa-lg transition duration-75 dark:text-gray-400 dark:group-hover:text-white"></i>
+
+                                <span class="flex-1 ml-3 whitespace-nowrap">Ürünler</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="referanslar.php?id=1" class="text-gray-900 flex items-center p-2 text-base font-normal rounded-lg dark:text-white group hover:bg-teal-400 hover:text-white dark:hover:bg-gray-700">
+                                <i class="text-gray-500 group-hover:text-white fa-solid fa-user-plus fa-lg transition duration-75 dark:text-gray-400 dark:group-hover:text-white"></i>
+
+                                <span class="flex-1 ml-3 whitespace-nowrap">Referanslar</span>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="hesaplartablo.php?id=1" class="text-gray-900 flex items-center p-2 text-base font-normal rounded-lg dark:text-white group hover:bg-teal-400 hover:text-white dark:hover:bg-gray-700">
+                                <i class="text-gray-500 group-hover:text-white fa-solid fa-users fa-lg transition duration-75 dark:text-gray-400 dark:group-hover:text-white"></i>
+
+                                <span class="flex-1 ml-3 whitespace-nowrap">Üyeler</span>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="satinalimlar.php?id=1" class="text-gray-900 flex items-center p-2 text-base font-normal rounded-lg dark:text-white group hover:bg-teal-400 hover:text-white dark:hover:bg-gray-700">
+                                <i class="text-gray-500 group-hover:text-white fa-solid fa-money-check-dollar fa-lg transition duration-75 dark:text-gray-400 dark:group-hover:text-white"></i>
+                                <span class="flex-1 ml-3 whitespace-nowrap">Satışlar</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="reklamlar.php?id=1" class="text-gray-900 flex items-center p-2 text-base font-normal rounded-lg dark:text-white group hover:bg-teal-400 hover:text-white dark:hover:bg-gray-700">
+                                <i class="text-gray-500 group-hover:text-white fa-solid fa-rectangle-ad fa-lg transition duration-75 dark:text-gray-400 dark:group-hover:text-white"></i>
+                                <span class="flex-1 ml-3 whitespace-nowrap">Reklamlar</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tablo.php?id=1" class="text-gray-900 flex items-center p-2 text-base font-normal rounded-lg dark:text-white group hover:bg-teal-400 hover:text-white dark:hover:bg-gray-700">
+                                <i class="text-gray-500 group-hover:text-white fa-solid fa-bullhorn fa-lg transition duration-75 dark:text-gray-400 dark:group-hover:text-white"></i>
+                                <span class="flex-1 ml-3 whitespace-nowrap">Kampanyalar</span>
+                            </a>
+                        </li>
+                        <a href="banlartablo.php?id=1" class="text-gray-900 flex items-center p-2 text-base font-normal rounded-lg dark:text-white group hover:bg-teal-400 hover:text-white dark:hover:bg-gray-700">
+                            <i class="text-gray-500 group-hover:text-white fa-solid fa-user-xmark fa-lg transition duration-75 dark:text-gray-400 dark:group-hover:text-white"></i>
+                            <span class="flex-1 ml-3 whitespace-nowrap">Cezalı Üyeler</span>
+                        </a>
+                        </li>
+                        <li>
+                            <a href="ayarlar.php" class="text-gray-900 flex items-center p-2 text-base font-normal rounded-lg dark:text-white group hover:bg-teal-400 hover:text-white dark:hover:bg-gray-700">
+                                <i class="text-gray-500 group-hover:text-white fa-solid fa-gear fa-lg transition duration-75 dark:text-gray-400 dark:group-hover:text-white"></i>
+                                <span class="flex-1 ml-3 whitespace-nowrap">Ayarlar</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./cikis.php" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white group hover:bg-teal-400 hover:text-white dark:hover:bg-gray-700">
+                                <i class="fa-solid fa-right-from-bracket fa-lg  text-gray-500  transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"></i>
+                                <span class="flex-1 ml-3 whitespace-nowrap">Çıkış Yap</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </aside>
+
+        <div class="flex-1 h-screen overflow-x-hidden overflow-y-auto">
+            <header class="relative bg-white dark:bg-darker">
+                <div class="flex items-center justify-between p-2 border-b dark:border-primary-darker">
+
+                    <div class="container flex flex-wrap justify-between items-center">
+                        <button data-collapse-toggle="mobile-menu-1" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-1" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                            </svg>
+                            <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                        <a href="" class="flex items-center">
+                            <img src="./resources/images/aso.png" class="mr-3 h-6 sm:h-9" alt="Aso">
+                            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Aso</span>
+                        </a>
+
                     </div>
-                    <div class="div">
-                        <input type="text" placeholder="Username" class="input">
-                    </div>
+
                 </div>
-                <div class="input-div pass">
-                    <div class="i">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <div class="div">
-                        <input type="password" placeholder="Password" class="input">
-                    </div>
-                </div>
-                <a href="#">Forgot Password?</a>
-                <input type="submit" class="btn" value="Login">
-            </form>
+
+            </header>
+<div class="p-2">
+    <form action="" method="post">
+        <div class="flex flex-wrap md:flex-nowrap w-full justify-around">
+            <div class="w-full p-2">
+                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">Uygulama</label>
+                <select name="app" id="apps" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-200 focus:border-teal-500 block w-full p-2.5">
+                    <option selected>Lütfen bir uygulama seçiniz.</option>
+                                            <option value="com.reidx.logla">com.reidx.logla</option>
+                                            <option value="com.mmm.logger">com.mmm.logger</option>
+                                            <option value="com.reidx.tiktokvideodownloader">com.reidx.tiktokvideodownloader</option>
+                                    </select>
+            </div>
+            <div class="w-full p-2">
+                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">Kelime</label>
+                <select name="keywords" id="keywords" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-200 focus:border-teal-500 block w-full p-2.5 ">
+                    <option selected>Lütfen bir kelime seçiniz.</option>
+                </select>
+            </div>
+            <div class="w-full p-2">
+                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">Ülke</label>
+                <select name="country" id="country" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-200 focus:border-teal-500 block w-full p-2.5 ">
+                    <option selected>Lütfen bir ülke seçiniz.</option>
+                    <option value="in">Hindistan</option>
+                    <option value="us">Amerika Birleşik Devletleri</option>
+                    <option value="it">İtalya</option>
+                    <option value="es">İspanya</option>
+                    <option value="de">Almanya</option>
+                    <option value="all">Bütün Ülkeler</option>
+
+                </select>
+            </div>
         </div>
+        <div class="flex justify-center mb-2 ">
+            <div class="flex items-center mr-2">
+                <input checked id="default-radio-1" type="radio" value="Sira" name="asoval" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 ">
+                <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 ">Sıra</label>
+            </div>
+            <div class="flex items-center">
+                <input id="default-radio-2" type="radio" value="Yıldız" name="asoval" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900">Yıldız</label>
+            </div>
+        </div>
+        <div id="alert" class="hidden p-4 mb-4 bg-teal-100 border-t-4 border-teal-500 dark:bg-teal-200" role="alert">
+            <div id="alertMessage" class="ml-1 text-sm font-medium text-teal-700">
+            </div>
+        </div>
+        <button id="submitBtn" class="hidden" type="submit"></button>
+        <button type="button" id="gonderBtn" class="w-full focus:outline-none text-white bg-teal-400 hover:bg-teal-500 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Gönder</button>
+    </form>
+
+            <div class="pt-2">
+            <div class="bg-white border-transparent rounded-lg ">
+                <div class="p-5">
+                    <div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand">
+                            <div class=""></div>
+                        </div>
+                        <div class="chartjs-size-monitor-shrink">
+                            <div class=""></div>
+                        </div>
+                    </div>
+                    <canvas id="chartjs-7" class="chartjs chartjs-render-monitor" width="298" height="149" style="display: block; width: 298px; height: 149px;"></canvas>
+                </div>
+            </div>
+        </div>
+        <script>
+            var d = new Date();
+            gun = d.getDay();
+            switch (gun) {
+                case 1:
+                    var gunler = ["Salı", "Çarşamba", "Parşembe", "Cuma", "Cumartesi", "Pazar", "Pazartesi"];
+                    break;
+                case 2:
+                    var gunler = ["Çarşamba", "Parşembe", "Cuma", "Cumartesi", "Pazar", "Pazartesi", "Salı"];
+                    break;
+                case 3:
+                    var gunler = ["Parşembe", "Cuma", "Cumartesi", "Pazar", "Pazartesi", "Salı", "Çarşamba"];
+                    break;
+                case 4:
+                    var gunler = ["Cuma", "Cumartesi", "Pazar", "Pazartesi", "Salı", "Çarşamba", "Parşembe"];
+                    break;
+                case 5:
+                    var gunler = ["Cumartesi", "Pazar", "Pazartesi", "Salı", "Çarşamba", "Parşembe", "Cuma"];
+                    break;
+                case 6:
+                    var gunler = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Parşembe", "Cuma", "Cumartesi"];
+                    break;
+                case 0:
+                    var gunler = ["Pazartesi", "Salı", "Çarşamba", "Parşembe", "Cuma", "Cumartesi", "Pazar"];
+                    break;
+            }
+            apiType = "getAso";
+            paketAdi = "com.reidx.logla";
+            keywords = "whatsapp%20tracker";
+            ulke = "all";
+            asoval = "Sira";
+            if (ulke == "all") {
+                $.ajax({
+                    type: "POST",
+                    url: 'api.php',
+                    data: {
+                        apiType,
+                        paketAdi,
+                        keywords,
+                        ulke,
+                        asoval
+
+                    },
+                    success: function(data) {
+                        var yanit = JSON.parse(data);
+                        new Chart(document.getElementById("chartjs-7"), {
+                            "type": "line",
+                            "data": {
+                                "labels": gunler,
+                                "datasets": [{
+                                    "label": "Hindistan",
+                                    "data": yanit[0],
+                                    "fill": false,
+                                    "borderColor": "rgb(255, 51, 51)",
+                                }, {
+                                    "label": "Amerika Birleşik Devletleri",
+                                    "data": yanit[1],
+                                    "type": "line",
+                                    "fill": false,
+                                    "borderColor": "rgb(54, 162, 235)"
+                                }, {
+                                    "label": "İtalya",
+                                    "data": yanit[2],
+                                    "type": "line",
+                                    "fill": false,
+                                    "borderColor": "rgb(0, 255, 0)"
+                                }, {
+                                    "label": "İspanya",
+                                    "data": yanit[3],
+                                    "type": "line",
+                                    "fill": false,
+                                    "borderColor": "rgb(255, 255, 0)"
+                                }, {
+                                    "label": "Almanya",
+                                    "data": yanit[4],
+                                    "type": "line",
+                                    "fill": false,
+                                    "borderColor": "rgb(255, 0, 255)"
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+
+                                tooltips: {
+                                    mode: 'index',
+                                    intersect: false,
+                                },
+                                hover: {
+                                    mode: 'nearest',
+                                    intersect: true
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        display: true,
+                                    }],
+                                    yAxes: [{
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        },
+                                    }]
+                                }
+                            }
+                        });
+                    },
+                });
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: 'api.php',
+                    data: {
+                        apiType,
+                        paketAdi,
+                        keywords,
+                        ulke,
+                        asoval
+
+                    },
+                    success: function(data) {
+
+                        var yanit = JSON.parse(data);
+                        new Chart(document.getElementById("chartjs-7"), {
+                            "type": "line",
+                            "data": {
+                                "labels": gunler,
+                                "datasets": [{
+                                    "label": "ALL",
+                                    "data": yanit,
+                                    "fill": false,
+                                    "borderColor": "rgb(255, 51, 51)",
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+
+                                tooltips: {
+                                    mode: 'index',
+                                    intersect: false,
+                                },
+                                hover: {
+                                    mode: 'nearest',
+                                    intersect: true
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        display: true,
+                                    }],
+                                    yAxes: [{
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        },
+                                    }]
+                                }
+                            }
+                        });
+                    },
+                });
+            }
+        </script>
     </div>
 
-</body>
+<script>
+    function alertGoster(alertText) {
+        $('#alert').removeClass("hidden");
+        $('#alert').addClass("flex");
+        $('#alertMessage').text(alertText);
+    }
 
+    function alertGizle() {
+        $('#alert').removeClass("flex");
+        $('#alert').addClass("hidden");
+    }
+    $("#gonderBtn").click(function() {
+        appsval = $('#apps').val();
+        keywordsVal = $('#keywords').val();
+        countryVal = $('#country').val();
+
+        if (appsval != "Lütfen bir uygulama seçiniz.") {
+            if (keywordsVal != "Lütfen bir kelime seçiniz.") {
+                if (countryVal != "Lütfen bir ülke seçiniz.") {
+                    alertGoster("başarılı chart gösterilcek ");
+                    $("#submitBtn").click();
+                } else {
+                    alertGoster("Lütfen bir Ülke seçiniz");
+                }
+            } else {
+                alertGoster("Lütfen bir kelime seçiniz");
+            }
+        } else {
+            alertGoster("Lütfen bir uygulama seçiniz");
+        }
+    });
+    $("#apps").change(function() {
+        appsval = $('#apps').val();
+        if (appsval != "Lütfen bir uygulama seçiniz.") {
+            apiType = "getKeywords";
+            $.ajax({
+                type: "POST",
+                url: 'api.php',
+                data: {
+                    apiType,
+                    appsval,
+                },
+                success: function(data) {
+                    veriler = JSON.parse(data);
+                    $('#keywords').html("");
+                    $('#keywords').append(`<option selected>Lütfen bir kelime seçiniz.</option>`);
+                    veriler.forEach(function(veri) {
+                        $('#keywords').append(
+                            `<option value="${veri}">${decodeURI(veri)}</option>`);
+                    });
+                },
+            });
+        } else {
+
+            $('#keywords').html("");
+            $('#keywords').append(`<option selected>Lütfen bir kelime seçiniz.</option>`);
+
+        }
+
+    });
+</script>
+
+</div>
+    </div>
+</body>
 </html>
